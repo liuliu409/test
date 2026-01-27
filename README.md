@@ -164,7 +164,7 @@ Click the test case buttons in the sidebar to load demonstrations:
 ### Token Counting
 - Uses `tiktoken` with `cl100k_base` encoding (GPT-4 standard)
 - Counts tokens across entire message history
-- **Threshold set to 1,000 tokens** for demo purposes (production would use 10k+)
+- **Threshold set to 800 tokens** for demo purposes.
 
 ### Summarization Strategy
 - **Merge-based**: New information is merged into existing summary (not replaced)
