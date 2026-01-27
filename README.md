@@ -349,3 +349,8 @@ Built with:
 
 **Questions or Issues?** Check that your `.env` file contains a valid `GROQ_API_KEY` and all dependencies are installed.
 
+## 📝 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+**Disclaimer**: This is a technical demo project built for academic purposes. Use as a reference or starting point for your own implementations.
