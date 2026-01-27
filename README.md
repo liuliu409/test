@@ -9,6 +9,8 @@ A production-ready chat assistant built with **LangGraph**, **Groq API**, and **
 Built as a technical demo for take-home assessment.
 
 ---
+## 📺 Video Demonstration
+**Watch the full test case demonstration here:** 👉 [**Project Demo & Test Cases Video**](https://drive.google.com/file/d/1j9YedHKq7IEEFeD7AAMVTpMdDltI4hd6/view?usp=sharing)
 
 ## 🏗️ Architecture
 
