@@ -11,7 +11,12 @@ Built as a technical demo for take-home assessment.
 ---
 ## 📺 Video Demonstration
 **Watch the full test case demonstration here:** 👉 [**Project Demo & Test Cases Video**](https://drive.google.com/file/d/1j9YedHKq7IEEFeD7AAMVTpMdDltI4hd6/view?usp=sharing)
+## 📊 Demo Execution Metrics
+- **Total API Calls**: 65 requests were successfully processed during the demo session.
 
+- **Model Used**: llama-3.1-8b-instant via Groq LPU, ensuring high throughput.
+
+- **Success Rate**: 100% of the 65 calls adhered to the structured Pydantic schema.
 ## 🏗️ Architecture
 
 ### LangGraph Workflow
@@ -71,6 +76,20 @@ The `summarize_node` implements an explicit **Memory Management Agent** role tha
 5. **Preserves Context**: Keeps the last 5 messages for immediate context while archiving older messages
 
 The agent follows strict guidelines to only include explicitly stated information and maintains data integrity across conversation sessions.
+
+---
+## 🛠️ Technical Specifications
+
+The system is optimized for high-performance inference using the Groq LPU infrastructure. The primary model, **Llama 3.1 8B (Instant)**, was selected based on the following benchmarks:
+
+| Metric | Llama 3.1 8B (Instant) |
+| :--- | :--- |
+| **Inference Speed** | **560 Tokens/sec** |
+| **Input Price** | **$0.05 / 1M tokens** |
+| **Output Price** | $0.08 / 1M tokens |
+| **Context Window** | 131,072 tokens |
+| **Daily Limit (RPD)** | **14.4K Requests** |
+| **Rate Limit (RPM)** | 30 Requests per minute |
 
 ---
 
@@ -156,7 +175,7 @@ Click the test case buttons in the sidebar to load demonstrations:
 ├── .gitignore
 └── README.md
 ```
-
+---
 ---
 
 ## 🧪 Key Technical Decisions
@@ -231,7 +250,6 @@ QUERY ANALYSIS (Step 1-3)
 GROQ_MODEL = "llama-3.1-8b-instant"  # LLM model
 TOKEN_THRESHOLD = 800           # Summarization trigger (tokens)
 ```
-
 ---
 
 ## 📊 Data Models
