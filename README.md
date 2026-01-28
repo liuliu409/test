@@ -233,6 +233,7 @@ QUERY ANALYSIS (Step 1-3)
 ```
 📥 **Read the full technical report here:**  
 👉 [**Technical_Report**](https://drive.google.com/file/d/1110auu4sK7mp8WS20yb8wJ_JND20k1a7/view?usp=sharing)
+
 ---
 
 ## 🔧 Configuration
