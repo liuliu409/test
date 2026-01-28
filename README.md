@@ -1,6 +1,6 @@
 # Chat Assistant with Session Memory
 
-A production-ready chat assistant built with **LangGraph**, **Groq API**, and **Streamlit** that demonstrates:
+A production-style chat assistant built with **LangGraph**, **Groq API**, and **Streamlit** that demonstrates:
 - 🧠 **Long-term Context Management** via auto-summarization
 - 🔍 **Query Understanding** with ambiguity detection
 - 💾 **Session Persistence** using LangGraph's MemorySaver
@@ -199,7 +199,7 @@ Click the test case buttons in the sidebar to load demonstrations:
 ### Structured Outputs
 - Uses LangChain's `.with_structured_output()` wrapper (abstracts Groq's `response_format`)
 - Pydantic v2 models ensure data validation and type safety
-- Llama-3.1-70b model supports native function calling and tool use
+- Llama 3.1 8B model supports native function calling and tool use
 
 ### Session Persistence
 - LangGraph's `MemorySaver` checkpointer maintains state
