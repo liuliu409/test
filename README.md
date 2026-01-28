@@ -326,28 +326,59 @@ TOKEN_THRESHOLD = 800           # Summarization trigger (tokens)
 
 ## 🚨 Known Limitations
 
-* **Context Window Pressure**: Under high-token usage, the LLM may hallucinate or truncate the `final_augmented_context` field, leading to incomplete data injection.
-* **In-memory Persistence**: Current sessions are stored in volatile memory and are lost on server restart. (Use SQLite checkpointer for production).
-* **Missing Validation Layer**: The system currently lacks a pre-flight check to ensure generated context follows the mandatory `=== SESSION MEMORY ===` pattern before reaching the model.
-* **Topic Leakage**: During rapid context shifts (e.g., switching from Thailand to Japan), old decisions may persist in the augmented context unless manually reset.
+- **Context Window Pressure**  
+  When the prompt becomes too large, the LLM may hallucinate or cut off the `final_augmented_context`, causing missing or incomplete context.
+
+- **In-memory Persistence**  
+  Session data is currently stored in memory and will be lost when the server restarts. This is not suitable for production use.  
+  *(Use a SQLite checkpointer for production.)*
+
+- **Missing Validation Layer**  
+  There is no pre-flight validation to ensure the generated prompt follows the required  
+  `=== SESSION MEMORY ===` structure before being sent to the model.
+
+- **Topic Leakage**  
+  When users change topics quickly (e.g. from Thailand to Japan), decisions from the old topic may remain in the context because there is no automatic reset.
 
 ---
 
 ## 🔮 Future Enhancements
 
 ### 🛠 Core Engine Improvements
--  **Robust Two-Phase Retrieval**: Separate "context identification" from "data injection." Use Python-side logic to fetch raw data instead of relying on LLM-generated summaries.
--  **Pydantic Validation Layer**: Implement strict schema validation to reject malformed function calls (e.g., blocking strings containing `...`) before API submission.
--  **Persistent Checkpointer**: Migrate to **SQLite/PostgreSQL** for durable conversation state.
--  **Smart Truncation Strategy**: Implement a sliding window for `Recent conversation` to stay within token limits while preserving `User Profile` and `Key Facts`.
+
+- **Robust Two-Phase Retrieval**  
+  Split the process into two steps:  
+  1) identify what context is needed,  
+  2) fetch real data in Python.  
+  This avoids relying on LLM-generated summaries.
+
+- **Pydantic Validation Layer**  
+  Add strict schema validation to block invalid or placeholder values (such as `...`) before calling the API.
+
+- **Persistent Checkpointer**  
+  Store conversation state in **SQLite or PostgreSQL** so sessions survive restarts.
+
+- **Smart Truncation Strategy**  
+  Use a sliding window for recent messages to stay within token limits, while always keeping `User Profile` and `Key Facts`.
+
+---
 
 ### 🚀 Features & UX
--  **Multi-user Support**: Add authentication (JWT) and multi-tenant data isolation.
--  **Automatic Error Recovery**: Implement retry logic that falls back to `context=null` if a tool-use failure is detected.
--  **Topic Drift Detection**: Enhanced logic to identify when a user changes plans, triggering a "clean-up" of outdated `Decisions` in memory.
--  **Conversation Branching**: Allow users to explore alternative travel paths without overwriting the primary itinerary.
--  **Analytics Dashboard**: Monitor token consumption, node latency, and successful vs. failed function calls.
----
+
+- **Multi-user Support**  
+  Add authentication (JWT) and isolate data per user or tenant.
+
+- **Automatic Error Recovery**  
+  If a tool call fails, retry with `context = null` instead of breaking the flow.
+
+- **Topic Drift Detection**  
+  Detect when a user changes plans and automatically clear outdated `Decisions` from memory.
+
+- **Conversation Branching**  
+  Allow users to explore multiple options without overwriting the main conversation path.
+
+- **Analytics Dashboard**  
+  Track token usage, node latency, and the number of successful vs. failed function calls.
 
 ## 📝 License
 
