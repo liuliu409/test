@@ -231,7 +231,7 @@ QUERY ANALYSIS (Step 1-3)
 }
 ==================================================
 ```
-📥 **Read the full technical report here:**  👉 [**Technical_Report**](https://drive.google.com/file/d/1WxjSU4upaLlb55EeMixF3hIFGZe3rONo/view?usp=sharing)
+📥 **Read the full technical report here:**  👉 [**Technical_Report**](https://drive.google.com/file/d/1zCOM8jexj3-Dbj-mtNglMZJHVxi9d4vY/view?usp=sharing)
 
 ---
 
